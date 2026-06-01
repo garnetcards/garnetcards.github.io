@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garnet Cards | Affordable, Handmade & Printable Greeting Cards</title>
+    <style>
+        /* --- Base Styles & Vibrant Olive/Green Color Variables --- */
+        :root {
+            --primary: #3B5A42;     /* Deep Forest/Olive Green */
+            --primary-dark: #243B2A;/* Dark Moss for deep contrast */
+            --bg: #F4F7F4;          /* Soft, very light mint/sage background */
+            --card-bg: #ffffff;     /* Crisp white for the product cards to pop */
+            --accent: #8FA882;      /* Bright Sage Green for highlights and tags */
+            --pop-color: #E29578;   /* Warm Terracotta/Peach accent color to add high contrast vibrance */
+            --text-dark: #1C281F;   /* Deep charcoal-green for ultra-readable text */
+            --gray-light: #E6ECE6;  /* Light leafy gray for section backgrounds */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: var(--primary);
+            border-bottom: 3px solid var(--primary-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--bg);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--bg);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--pop-color);
+            opacity: 1;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 7rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #F9FBF9 0%, #E8EFE8 100%);
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #445247;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--bg);
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(59, 90, 66, 0.2);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        /* --- Purpose/Mission Ribbon --- */
+        .mission-ribbon {
+            background-color: var(--primary-dark);
+            color: var(--bg);
+            text-align: center;
+            padding: 1.2rem 0;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* --- Products Section --- */
+        .products {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            position: relative;
+        }
+
+        /* A colorful line underneath titles */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--pop-color);
+            margin: 0.5rem auto 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--gray-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(59, 90, 66, 0.08);
+        }
+
+        /* Colorful mock card backgrounds */
+        .product-image-placeholder {
+            width: 100%;
+            height: 250px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
+        
+        .bg-handmade { background-color: #DCE5DD; color: #243B2A; }
+        .bg-printed  { background-color: #EAE6DF; color: #5C5243; }
+        .bg-digital  { background-color: #F3DFD7; color: #7A4F3D; }
+
+        .product-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+        }
+
+        .product-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--pop-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        .product-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        /* --- About / Impact Section --- */
+        .about {
+            background-color: var(--gray-light);
+            padding: 5rem 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #334237;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--bg);
+            padding: 3.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">Garnet Cards</a>
+            <ul class="nav-links">
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Beautiful Cards.<br>Honest Prices.</h1>
+            <p>Thoughtfully designed greeting cards for every occasion. Available as premium printed physical cards, unique handmade editions, or instant digital downloads.</p>
+            <a href="#shop" class="btn">Browse Collection</a>
+        </div>
+    </section>
+
+    <!-- Mission Announcement Ribbon -->
+    <div class="mission-ribbon">
+        🌿 High-quality greeting cards made affordable—proud to give back to our local community.
+    </div>
+
+    <!-- Shop / Products Section -->
+    <section class="products" id="shop">
+        <div class="container">
+            <h2 class="section-title">The Collection</h2>
+            
+            <div class="product-grid">
+                <!-- Card 1 -->
+                <div class="product-card">
+                    <div class="product-image-placeholder bg-handmade">Handmade Card Preview</div>
+                    <span class="product-tag">Handmade Original</span>
+                    <h3>The Classic Birthday</h3>
+                    <p style="color: #556257; margin-bottom: 1rem; font-size: 0.9rem;">Crafted with premium textured cardstock and individual care.</p>
+                    <div class="product-price">$4.00</div>
+                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Add to Cart</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="product-card">
+                    <div class="product-image-placeholder bg-printed">Printed Card Preview</div>
+                    <span class="product-tag">Printed Studio Pack</span>
+                    <h3>Minimalist Thank You</h3>
+                    <p style="color: #556257; margin-bottom: 1rem; font-size: 0.9rem;">Clean, sleek matte printing. Perfect for standard mailing.</p>
+                    <div class="product-price">$2.50</div>
+                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Add to Cart</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="product-card">
+                    <div class="product-image-placeholder bg-digital">Digital Card Preview</div>
+                    <span class="product-tag">Instant Download</span>
+                    <h3>Abstract Anniversary</h3>
+                    <p style="color: #556257; margin-bottom: 1rem; font-size: 0.9rem;">High-res PDF template. Print it instantly at home whenever you need it.</p>
+                    <div class="product-price">$1.50</div>
+                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Impact Section -->
+    <section class="about" id="about">
+        <div class="container about-content">
+            <h2 class="section-title">Why We Exist</h2>
+            <p>We started <strong>Garnet Cards</strong> with a simple belief: celebrating people shouldn't cost a fortune. Greeting cards have gotten unreasonably expensive, so we're bringing things back to basics with affordable, high-quality options.</p>
+            <p>Whether you want a physically crafted piece, a crisp studio print, or the ultimate convenience of a printable template you can use at home, we've got you covered.</p>
+            <p><strong>Giving Back:</strong> We believe in supporting the community that supports us. We're currently planning how to best allocate a portion of our profits to causes that make a real difference.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2026 Garnet Cards. All Rights Reserved.</p>
+            <p style="font-size: 0.8rem; opacity: 0.6;">Designed for affordability and community impact.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
