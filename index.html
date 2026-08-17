@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garnet Cards | Affordable, Handmade & Printable Greeting Cards</title>
+    <title>Garnet Cards | Affordable, Handmade & Printed Greeting Cards</title>
     <style>
+        /* --- Base Styles & Olive/Green Theme Variables --- */
         :root {
             --primary: #3B5A42;     /* Deep Forest/Olive Green */
             --primary-dark: #243B2A;/* Dark Moss for deep contrast */
-            --bg: #F4F7F4;          /* Soft, very light mint/sage background */
-            --card-bg: #ffffff;     /* Crisp white for the product cards to pop */
-            --accent: #8FA882;      /* Bright Sage Green for highlights and tags */
-            --pop-color: #E29578;   /* Warm Terracotta/Peach accent color to add high contrast vibrance */
-            --text-dark: #1C281F;   /* Deep charcoal-green for ultra-readable text */
-            --gray-light: #E6ECE6;  /* Light leafy gray for section backgrounds */
+            --bg: #F4F7F4;          /* Light mint/sage background */
+            --card-bg: #ffffff;     /* Crisp white for product cards */
+            --accent: #8FA882;      /* Bright Sage Green for highlights */
+            --pop-color: #E29578;   /* Terracotta accent color */
+            --text-dark: #1C281F;   /* Deep charcoal-green text */
+            --gray-light: #E6ECE6;  /* Light leafy gray for borders */
         }
 
         * {
@@ -27,6 +28,7 @@
             background-color: var(--bg);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -41,7 +43,7 @@
             border-bottom: 3px solid var(--primary-dark);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 999;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
@@ -59,6 +61,12 @@
             text-transform: uppercase;
             text-decoration: none;
             color: var(--bg);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         .nav-links {
@@ -83,27 +91,56 @@
             opacity: 1;
         }
 
+        /* --- Cart Button Icon --- */
+        .cart-toggle-btn {
+            background: var(--primary-dark);
+            color: var(--bg);
+            border: 1px solid var(--accent);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .cart-toggle-btn:hover {
+            background-color: var(--pop-color);
+            border-color: var(--pop-color);
+            color: #fff;
+        }
+
+        .cart-count {
+            background-color: var(--bg);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            padding: 0.1rem 0.5rem;
+            font-size: 0.8rem;
+        }
+
         /* --- Hero Section --- */
         .hero {
-            padding: 7rem 0;
+            padding: 6rem 0;
             text-align: center;
             background: linear-gradient(135deg, #F9FBF9 0%, #E8EFE8 100%);
             border-bottom: 1px solid var(--gray-light);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             text-transform: uppercase;
             letter-spacing: -1px;
-            line-height: 1.1;
+            line-height: 1.15;
             color: var(--primary-dark);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: #445247;
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto 2rem auto;
         }
 
@@ -119,6 +156,7 @@
             font-size: 0.9rem;
             border: 2px solid var(--primary);
             border-radius: 4px;
+            cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(59, 90, 66, 0.2);
         }
@@ -155,7 +193,6 @@
             position: relative;
         }
 
-        /* A colorful line underneath titles */
         .section-title::after {
             content: '';
             display: block;
@@ -165,10 +202,21 @@
             margin: 0.5rem auto 0 auto;
         }
 
+        .category-heading {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin: 2rem 0 1.5rem 0;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .product-card {
@@ -178,6 +226,9 @@
             padding: 1.5rem;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -187,11 +238,10 @@
             box-shadow: 0 10px 25px rgba(59, 90, 66, 0.08);
         }
 
-        /* Colorful mock card backgrounds */
         .product-image-placeholder {
             width: 100%;
-            height: 250px;
-            margin-bottom: 1.5rem;
+            height: 180px;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -199,21 +249,24 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             border-radius: 4px;
+            font-size: 0.9rem;
+            padding: 0.5rem;
         }
         
         .bg-handmade { background-color: #DCE5DD; color: #243B2A; }
         .bg-printed  { background-color: #EAE6DF; color: #5C5243; }
-        .bg-digital  { background-color: #F3DFD7; color: #7A4F3D; }
+        .bg-blue     { background-color: #DDE6EE; color: #2B4154; }
+        .bg-pink     { background-color: #F8E2E5; color: #6E3B42; }
 
         .product-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             color: var(--primary-dark);
         }
 
         .product-tag {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             color: var(--pop-color);
             font-weight: 700;
@@ -225,8 +278,183 @@
         .product-price {
             font-weight: 700;
             font-size: 1.2rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             color: var(--text-dark);
+        }
+
+        /* --- Customization Fields --- */
+        .customization-box {
+            background-color: #fcfdfc;
+            border: 1px dashed var(--accent);
+            border-radius: 6px;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .customization-box h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 0.6rem;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.4rem 0.5rem;
+            font-size: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+        }
+
+        /* --- Shopping Cart Sidebar --- */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px; 
+            width: 400px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.4s ease;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            background-color: var(--primary-dark);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-cart {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items-container {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .cart-item-details h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .cart-item-details span {
+            font-size: 0.85rem;
+            color: #666;
+            display: block;
+        }
+
+        .cart-item-custom-notes {
+            font-size: 0.75rem;
+            background-color: #f7f9f7;
+            border-left: 3px solid var(--accent);
+            padding: 0.3rem 0.5rem;
+            margin-top: 0.4rem;
+            border-radius: 2px;
+            color: #445247;
+            word-break: break-word;
+        }
+
+        .cart-qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .qty-btn {
+            background-color: var(--gray-light);
+            border: none;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 2px solid var(--gray-light);
+            background-color: #fafafa;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: 1000;
+            display: none;
+        }
+
+        .cart-overlay.show {
+            display: block;
         }
 
         /* --- About / Impact Section --- */
@@ -268,8 +496,20 @@
                 flex-direction: column;
                 gap: 1.2rem;
             }
+            .nav-right {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+            .nav-links {
+                justify-content: center;
+            }
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.3rem;
+            }
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
             }
         }
     </style>
@@ -280,26 +520,30 @@
     <header>
         <div class="container navbar">
             <a href="#" class="logo">Garnet Cards</a>
-            <ul class="nav-links">
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="#about">Our Story</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                </ul>
+                <button class="cart-toggle-btn" id="cartToggle">
+                    🛒 Cart <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Beautiful Cards.<br>Honest Prices.</h1>
-            <p>Thoughtfully designed greeting cards for every occasion. Available as premium printed physical cards, unique handmade editions, or instant digital downloads.</p>
+            <h1>Handmade & Printed<br>Greeting Cards</h1>
+            <p>Thoughtfully crafted cards for every milestone—from custom hand-lettered keepsakes to vibrant studio prints.</p>
             <a href="#shop" class="btn">Browse Collection</a>
         </div>
     </section>
 
     <!-- Mission Announcement Ribbon -->
     <div class="mission-ribbon">
-        🌿 High-quality greeting cards made affordable—proud to give back to our local community.
+        🌿 High-quality greeting cards made affordable—proudly giving back to our local community.
     </div>
 
     <!-- Shop / Products Section -->
@@ -307,47 +551,196 @@
         <div class="container">
             <h2 class="section-title">The Collection</h2>
             
+            <!-- SECTION 1: HANDMADE CARDS -->
+            <h3 class="category-heading">Handmade Collection</h3>
             <div class="product-grid">
-                <!-- Card 1 -->
-                <div class="product-card">
-                    <div class="product-image-placeholder bg-handmade">Handmade Card Preview</div>
-                    <span class="product-tag">Handmade Original</span>
-                    <h3>The Classic Birthday</h3>
-                    <p style="color: #556257; margin-bottom: 1rem; font-size: 0.9rem;">Crafted with premium textured cardstock and individual care.</p>
-                    <div class="product-price">$4.00</div>
-                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Add to Cart</a>
+                
+                <!-- Handmade 1: Happy Birthday -->
+                <div class="product-card" data-id="hm-1" data-name="Handmade Happy Birthday" data-price="4.00">
+                    <div>
+                        <div class="product-image-placeholder bg-handmade">Handmade Birthday Preview</div>
+                        <span class="product-tag">Handmade Calligraphy</span>
+                        <h3>Happy Birthday</h3>
+                        <p style="color: #556257; margin-bottom: 1rem; font-size: 0.85rem;">Hand-lettered on premium heavyweight cardstock.</p>
+                        <div class="product-price">$4.00</div>
+                        
+                        <div class="customization-box">
+                            <h4>✨ Customize Card</h4>
+                            <div class="form-group">
+                                <label for="hm1-name">Recipient's Name:</label>
+                                <input type="text" class="custom-name-input" placeholder="e.g. Sarah, Alex, Mom" maxlength="25">
+                            </div>
+                            <div class="form-group">
+                                <label for="hm1-color">Name Text Color:</label>
+                                <select class="custom-color-select">
+                                    <option value="Garnet Red">Garnet Red</option>
+                                    <option value="Gold Metallic">Gold Metallic</option>
+                                    <option value="Classic Black">Classic Black</option>
+                                    <option value="Olive Green">Olive Green</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn add-to-cart-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem; width: 100%;">Add to Cart</button>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="product-card">
-                    <div class="product-image-placeholder bg-printed">Printed Card Preview</div>
-                    <span class="product-tag">Printed Studio Pack</span>
-                    <h3>Minimalist Thank You</h3>
-                    <p style="color: #556257; margin-bottom: 1rem; font-size: 0.9rem;">Clean, sleek matte printing. Perfect for standard mailing.</p>
-                    <div class="product-price">$2.50</div>
-                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Add to Cart</a>
+                <!-- Handmade 2: Congrats -->
+                <div class="product-card" data-id="hm-2" data-name="Handmade Congrats" data-price="4.00">
+                    <div>
+                        <div class="product-image-placeholder bg-handmade">Handmade Congrats Preview</div>
+                        <span class="product-tag">Handmade Calligraphy</span>
+                        <h3>Congrats!</h3>
+                        <p style="color: #556257; margin-bottom: 1rem; font-size: 0.85rem;">Celebrate big achievements with handcrafted flair.</p>
+                        <div class="product-price">$4.00</div>
+                        
+                        <div class="customization-box">
+                            <h4>✨ Customize Card</h4>
+                            <div class="form-group">
+                                <label>Recipient's Name:</label>
+                                <input type="text" class="custom-name-input" placeholder="e.g. Graduate, David" maxlength="25">
+                            </div>
+                            <div class="form-group">
+                                <label>Name Text Color:</label>
+                                <select class="custom-color-select">
+                                    <option value="Garnet Red">Garnet Red</option>
+                                    <option value="Gold Metallic">Gold Metallic</option>
+                                    <option value="Classic Black">Classic Black</option>
+                                    <option value="Olive Green">Olive Green</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn add-to-cart-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem; width: 100%;">Add to Cart</button>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="product-card">
-                    <div class="product-image-placeholder bg-digital">Digital Card Preview</div>
-                    <span class="product-tag">Instant Download</span>
-                    <h3>Abstract Anniversary</h3>
-                    <p style="color: #556257; margin-bottom: 1rem; font-size: 0.9rem;">High-res PDF template. Print it instantly at home whenever you need it.</p>
-                    <div class="product-price">$1.50</div>
-                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Add to Cart</a>
+                <!-- Handmade 3: Math Pi Appreciation -->
+                <div class="product-card" data-id="hm-3" data-name="Handmade Pi Appreciation" data-price="4.00">
+                    <div>
+                        <div class="product-image-placeholder bg-handmade">Handmade π Math Card</div>
+                        <span class="product-tag">Handmade Math Edition</span>
+                        <h3>Math Appreciation (π)</h3>
+                        <p style="color: #556257; margin-bottom: 1rem; font-size: 0.85rem;">Featuring handwritten pi details. Perfect for teachers & STEM lovers!</p>
+                        <div class="product-price">$4.00</div>
+                        
+                        <div class="customization-box">
+                            <h4>✨ Customize Card</h4>
+                            <div class="form-group">
+                                <label>Recipient's Name:</label>
+                                <input type="text" class="custom-name-input" placeholder="e.g. Mr. Smith, Jessica" maxlength="25">
+                            </div>
+                            <div class="form-group">
+                                <label>Name Text Color:</label>
+                                <select class="custom-color-select">
+                                    <option value="Garnet Red">Garnet Red</option>
+                                    <option value="Gold Metallic">Gold Metallic</option>
+                                    <option value="Classic Black">Classic Black</option>
+                                    <option value="Olive Green">Olive Green</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn add-to-cart-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem; width: 100%;">Add to Cart</button>
                 </div>
+
+            </div>
+
+            <!-- SECTION 2: PRINTED CARDS -->
+            <h3 class="category-heading">Printed Collection</h3>
+            <div class="product-grid">
+
+                <!-- Printed 1: Happy Birthday / Congrats Combo -->
+                <div class="product-card" data-id="pr-1" data-name="Printed Birthday / Congrats" data-price="2.50">
+                    <div>
+                        <div class="product-image-placeholder bg-printed">Printed Bday / Congrats</div>
+                        <span class="product-tag">Printed Card</span>
+                        <h3>Happy Birthday / Congrats</h3>
+                        <p style="color: #556257; margin-bottom: 1rem; font-size: 0.85rem;">Clean matte print card suitable for dual celebration wishes.</p>
+                        <div class="product-price">$2.50</div>
+
+                        <div class="customization-box">
+                            <h4>💬 Optional Personal Note</h4>
+                            <div class="form-group">
+                                <label>Custom Short Message:</label>
+                                <input type="text" class="custom-message-input" placeholder="e.g. So proud of you!" maxlength="60">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn add-to-cart-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem; width: 100%;">Add to Cart</button>
+                </div>
+
+                <!-- Printed 2: Classic Happy Birthday -->
+                <div class="product-card" data-id="pr-2" data-name="Printed Classic Birthday" data-price="2.50">
+                    <div>
+                        <div class="product-image-placeholder bg-printed">Printed Classic Birthday</div>
+                        <span class="product-tag">Printed Card</span>
+                        <h3>Classic Happy Birthday</h3>
+                        <p style="color: #556257; margin-bottom: 1rem; font-size: 0.85rem;">Timeless design printed on high-quality cover cardstock.</p>
+                        <div class="product-price">$2.50</div>
+                    </div>
+                    <button class="btn add-to-cart-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem; width: 100%; margin-top: auto;">Add to Cart</button>
+                </div>
+
+                <!-- Printed 3: Blue Thank You Card -->
+                <div class="product-card" data-id="pr-3" data-name="Blue Thank You Card" data-price="2.50">
+                    <div>
+                        <div class="product-image-placeholder bg-blue">Blue Thank You Preview</div>
+                        <span class="product-tag">Printed Studio Card</span>
+                        <h3>Thank You (Blue Theme)</h3>
+                        <p style="color: #556257; margin-bottom: 1rem; font-size: 0.85rem;">Elegant, cool blue aesthetic for expressive gratitude.</p>
+                        <div class="product-price">$2.50</div>
+                    </div>
+                    <button class="btn add-to-cart-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem; width: 100%; margin-top: auto;">Add to Cart</button>
+                </div>
+
+                <!-- Printed 4: Pink/Strawberry Sweet 16 & Hello -->
+                <div class="product-card" data-id="pr-4" data-name="Pink Strawberry Sweet 16 & Hello" data-price="2.50">
+                    <div>
+                        <div class="product-image-placeholder bg-pink">🍓 Pink Sweet 16 & Hello</div>
+                        <span class="product-tag">Printed Studio Card</span>
+                        <h3>Sweet 16 / Hello (Pink Strawberry)</h3>
+                        <p style="color: #556257; margin-bottom: 1rem; font-size: 0.85rem;">Vibrant pink strawberry theme. Great for Sweet 16s or fun hellos!</p>
+                        <div class="product-price">$2.50</div>
+
+                        <div class="customization-box">
+                            <h4>💬 Optional Personal Note</h4>
+                            <div class="form-group">
+                                <label>Custom Short Message:</label>
+                                <input type="text" class="custom-message-input" placeholder="e.g. Happy 16th, Chloe!" maxlength="60">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn add-to-cart-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem; width: 100%;">Add to Cart</button>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- About & Impact Section -->
+    <!-- Side Cart Panel -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Shopping Bag</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items-container" id="cartItemsContainer">
+            <p style="text-align: center; color: #777; margin-top: 2rem;" id="emptyCartMessage">Your cart is currently empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="cartTotalText">$0.00</span>
+            </div>
+            <button class="btn checkout-btn" onclick="alert('Checkout system ready!')">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- About Section -->
     <section class="about" id="about">
         <div class="container about-content">
             <h2 class="section-title">Why We Exist</h2>
-            <p>We started <strong>Garnet Cards</strong> with a simple belief: celebrating people shouldn't cost a fortune. Greeting cards have gotten unreasonably expensive, so we're bringing things back to basics with affordable, high-quality options.</p>
-            <p>Whether you want a physically crafted piece, a crisp studio print, or the ultimate convenience of a printable template you can use at home, we've got you covered.</p>
-            <p><strong>Giving Back:</strong> We believe in supporting the community that supports us. We're currently planning how to best allocate a portion of our profits to causes that make a real difference.</p>
+            <p>We started <strong>Garnet Cards</strong> with a simple belief: celebrating people shouldn't cost a fortune. Greeting cards have gotten unreasonably expensive, so we're bringing things back to basics with affordable, high-quality handmade and printed options.</p>
+            <p><strong>Giving Back:</strong> We believe in supporting the community that supports us. We're currently planning how to best allocate a portion of our profits to local causes that make a real difference.</p>
         </div>
     </section>
 
@@ -359,5 +752,144 @@
         </div>
     </footer>
 
+    <!-- JavaScript Logic -->
+    <script>
+        let cart = [];
+
+        const cartToggle = document.getElementById('cartToggle');
+        const closeCart = document.getElementById('closeCart');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        const cartCountBadge = document.getElementById('cartCount');
+        const cartTotalText = document.getElementById('cartTotalText');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+        function openCartMenu() {
+            cartSidebar.classList.add('open');
+            cartOverlay.classList.add('show');
+        }
+
+        function closeCartMenu() {
+            cartSidebar.classList.remove('open');
+            cartOverlay.classList.remove('show');
+        }
+
+        cartToggle.addEventListener('click', openCartMenu);
+        closeCart.addEventListener('click', closeCartMenu);
+        cartOverlay.addEventListener('click', closeCartMenu);
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const card = e.target.closest('.product-card');
+                const id = card.getAttribute('data-id');
+                const name = card.getAttribute('data-name');
+                const price = parseFloat(card.getAttribute('data-price'));
+
+                // Look for customization input elements within this product card
+                const nameInput = card.querySelector('.custom-name-input');
+                const colorSelect = card.querySelector('.custom-color-select');
+                const messageInput = card.querySelector('.custom-message-input');
+                
+                const recipientName = nameInput ? nameInput.value.trim() : '';
+                const textColor = colorSelect ? colorSelect.value : '';
+                const customMessage = messageInput ? messageInput.value.trim() : '';
+
+                addItemToCart(id, name, price, recipientName, textColor, customMessage);
+                
+                // Clear input boxes after adding to cart
+                if (nameInput) nameInput.value = '';
+                if (messageInput) messageInput.value = '';
+
+                openCartMenu();
+            });
+        });
+
+        function addItemToCart(id, name, price, recipientName, textColor, customMessage) {
+            // Build unique key so customized variations remain distinct items in the bag
+            const uniqueCartId = `${id}-${recipientName}-${textColor}-${customMessage}`;
+            
+            const existingItem = cart.find(item => item.uniqueId === uniqueCartId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ 
+                    uniqueId: uniqueCartId,
+                    id, 
+                    name, 
+                    price, 
+                    quantity: 1,
+                    recipientName,
+                    textColor,
+                    customMessage
+                });
+            }
+            updateCartUI();
+        }
+
+        function changeQuantity(uniqueId, change) {
+            const item = cart.find(item => item.uniqueId === uniqueId);
+            if (!item) return;
+
+            item.quantity += change;
+
+            if (item.quantity <= 0) {
+                cart = cart.filter(item => item.uniqueId !== uniqueId);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+            cartCountBadge.textContent = totalItems;
+
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.appendChild(emptyCartMessage);
+                cartTotalText.textContent = "$0.00";
+                return;
+            }
+
+            let calculatedTotalPrice = 0;
+
+            cart.forEach(item => {
+                const itemTotalPrice = item.price * item.quantity;
+                calculatedTotalPrice += itemTotalPrice;
+
+                // Build custom text snippets for side cart display
+                let customizationSnippet = '';
+                if (item.recipientName || item.textColor || item.customMessage) {
+                    customizationSnippet = `
+                        <div class="cart-item-custom-notes">
+                            ${item.recipientName ? `👤 Name: <strong>${item.recipientName}</strong><br>` : ''}
+                            ${item.textColor ? `🎨 Color: <strong>${item.textColor}</strong><br>` : ''}
+                            ${item.customMessage ? `📝 Note: "<em>${item.customMessage}</em>"` : ''}
+                        </div>
+                    `;
+                }
+
+                const itemRow = document.createElement('div');
+                itemRow.classList.add('cart-item');
+                itemRow.innerHTML = `
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <span>$${item.price.toFixed(2)} x ${item.quantity}</span>
+                        ${customizationSnippet}
+                    </div>
+                    <div class="cart-qty-controls">
+                        <button class="qty-btn" onclick="changeQuantity('${item.uniqueId}', -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="qty-btn" onclick="changeQuantity('${item.uniqueId}', 1)">+</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemRow);
+            });
+
+            cartTotalText.textContent = `$${calculatedTotalPrice.toFixed(2)}`;
+        }
+    </script>
 </body>
 </html>
